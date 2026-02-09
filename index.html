@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy brithday To my dear frienf Hasib Hotak</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== صفحه شروع ===== */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeOut 3s ease forwards;
+  animation-delay: 2.5s;
+}
+
+#intro h1 { font-size: 32px; margin-bottom: 10px; text-shadow: 0 0 15px #fff; }
+#intro p { font-size: 18px; opacity: 0.8; }
+
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* ===== بکگراند ===== */
+.main {
+  min-height: 100vh;
+  background: url("background.jpg") center/cover fixed;
+  padding: 20px;
+}
+
+/* ===== تیتر ===== */
+.title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 22px;
+  background: rgba(0,0,0,0.6);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+}
+
+/* ===== گالری ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.7), -2px -2px 6px rgba(255,255,255,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ===== ویدیو ===== */
+.video-box { margin: 30px 0; }
+.video-box video {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 6px 6px 15px rgba(0,0,0,0.8), -3px -3px 8px rgba(255,255,255,0.1);
+}
+
+/* ===== متن پایانی ===== */
+.footer-text {
+  margin-top: 25px;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  text-align: center;
+  line-height: 1.8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+
+/* ===== ستاره ها ===== */
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: yellow;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* ===== پلیر موزیک شیک 3D ===== */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(145deg,#ff0,#fc0);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px #000, -3px -3px 10px #fff;
+  z-index: 100;
+  transition: transform 0.2s;
+}
+.music-btn:hover { transform: rotateY(20deg) scale(1.1); }
+</style>
+</head>
+
+<body>
+
+<!-- موزیک -->
+<audio id="bgMusic" loop muted>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- صفحه شروع -->
+<div id="intro">
+  <h1> Happy brithday Hasib jan :)</h1>
+  <p>...</p>
+</div>
+
+<!-- ستاره ها -->
+<div id="stars"></div>
+
+<!-- محتوای اصلی -->
+<div class="main">
+  <div class="title">جشن سال تولد حسیب جان</div>
+
+  <div class="gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+    <img src="img4.jpg">
+    <img src="img5.jpg">
+    <img src="img6.jpg">
+    <img src="img7.jpg">
+     <img src="img8.jpg">
+    <img src="img9.jpg">
+    <img src="img10.jpg">
+    <img src="img11.jpg">
+    <img src="img12.jpg">
+    <img src="img13.jpg">
+    <img src="img14.jpg">
+  </div>
+
+  <div class="video-box">
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="footer-text">
+    تصاویر یادگاری از سال ۲۰۲۶/۲/۷ با جمعی از دوستان  
+    انشاالله دوستی مان پایدار.
+  </div>
+</div>
+
+<!-- دکمه موزیک 3D -->
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// فعال کردن موزیک با لمس صفحه
+function startMusic() {
+  music.muted = false;
+  music.play();
+  document.removeEventListener("touchstart", startMusic);
+  document.removeEventListener("click", startMusic);
+}
+document.addEventListener("touchstart", startMusic);
+document.addEventListener("click", startMusic);
+
+// دکمه 3D موزیک
+function toggleMusic() {
+  if(music.paused) music.play();
+  else music.pause();
+}
+
+// اضافه کردن ستاره ها
+const starsContainer = document.getElementById("stars");
+for(let i=0;i<30;i++){
+  const star = document.createElement("div");
+  star.className="star";
+  star.style.top = Math.random()*100+"%";
+  star.style.left = Math.random()*100+"%";
+  star.style.animationDelay = Math.random()*22+"s";
+  starsContainer.appendChild(star);
+}
+
+// حرکت عکس ها با ماوس یا لمس
+const galleryImages = document.querySelectorAll(".gallery img");
+galleryImages.forEach(img => {
+  img.addEventListener("mousemove", e=>{
+    const rect = img.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width/2)/10;
+    const y = (e.clientY - rect.top - rect.height/2)/10;
+    img.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+  });
+  img.addEventListener("mouseleave", ()=>{
+    img.style.transform = "translate(0,0) scale(1)";
+  });
+  img.addEventListener("touchmove", e=>{
+    const touch = e.touches[0];
+    const rect = img.getBoundingClientRect();
+    const x = (touch.clientX - rect.left - rect.width/2)/10;
+    const y = (touch.clientY - rect.top - rect.height/2)/10;
+    img.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+  });
+  img.addEventListener("touchend", ()=>{
+    img.style.transform = "translate(0,0) scale(1)";
+  });
+});
+</script>
+
+</body>
+</html>
